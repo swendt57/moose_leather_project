@@ -119,13 +119,6 @@ p {
     top: 29px;
 }
 
-.nav-text {
-    font-family: "Squada One", sans-serif;
-    font-size: 24px;
-    font-variant: small-caps;
-    letter-spacing: .1rem;
-}
-
 /* BS OR */
 .navbar {
     height: 80px;
@@ -142,9 +135,12 @@ a.navbar-brand {
 
 /* BS OR */
 a.nav-link {
-    color: black;
+    font-family: "Squada One", sans-serif;
+    font-size: 24px;
+    font-variant: small-caps;
+    letter-spacing: .1rem;
     text-shadow: 1px 1px 0 #eee;
-
+    color: black;
 }
 
 a.nav-link:hover {
@@ -185,7 +181,7 @@ a.nav-link:hover {
         top: 32px;
     }
 
-    .nav-text {
+    a.nav-link {
         font-size: 27px;
     }
 
@@ -216,13 +212,16 @@ a.nav-link:hover {
         top: 35px;
     }
 
-    .nav-text {
-        font-size: 30px;
-    }
-
     /* BS OR */
     .navbar {
         height: 93px;
+    }
+
+    /* BS OR */
+    a.nav-link {
+        font-size: 30px;
+        /* moves navigation up off of "wood seam" on large screens*/
+        margin-bottom: 7px;
     }
 
 }
