@@ -1,0 +1,89 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {# <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">#}
+
+    <title>{{ page_title }}</title>
+</head>
+
+<body>
+
+<header>
+
+    <div id="header-bg"></div>
+
+    <div class="container">
+        <nav class="navbar fixed-top navbar-expand-md">
+
+            <a class="navbar-brand" href="/">
+                <div><img class="logo" src="{% static 'images/antlers.png' %}"
+                          alt="Image of Moose Leather's antler logo"></div>
+                <div class="title">
+                    <div class="moose">Moose</div>
+                    <div class="leather">Leather</div>
+                </div>
+            </a>
+
+            <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarToggler">
+
+                <!-- INFO this needs to be here in order to have the buttons right justified - there has to be a better way -->
+                <ul class="navbar-nav mr-auto mt-2 mt-md-0"></ul>
+
+                <ul class="nav navbar-nav text-right">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'index' %}"><span class="home"><span
+                                class="nav-text">Home</span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="top-ten"><span
+                                class="nav-text">Placeholder</span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="comparisons"><span
+                                class="nav-text">Placeholder</span></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><span class="maps"><span
+                                class="nav-text">Placeholder</span></span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</header>
+
+<section>
+    <div class="container">
+        <h3>{{ page_heading }}</h3>
+
+        {% block content %} {% endblock %}
+
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p class="copyright"> &copy;2020 Moose Leather</p>
+    </div>
+</footer>
+
+</body>
+</html>

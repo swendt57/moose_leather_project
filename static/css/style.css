@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css?family=Calistoga:400|Squada+One|Roboto:300,400,500,600,700&display=swap');
+
+/* BS OR = Bootstrap Override */
+
+/*---------------General Styles---------------*/
+
+html, body {
+    margin: 0;
+    height: 100%;
+    width: 100%;
+    display: table; /* used to position footer at bottom of short pages */
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+}
+
+/* BS OR */
+.container {
+    max-width: 90%;
+    padding: 0;
+}
+
+section {
+    padding-top: 95px;
+    margin: auto;
+}
+
+h3 {
+    font-family: "Lato", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 1.5rem;
+}
+
+p {
+    margin: 20px 10px;
+}
+
+
+/* styles for tablet */
+@media (min-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+
+    section {
+        padding-top: 100px;
+    }
+
+    h3 {
+        font-size: 1.75rem;
+    }
+}
+
+/* styles for desktop */
+@media (min-width: 992px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        max-width: 70%;
+    }
+
+    section {
+        padding-top: 120px;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+}
+
+
+/*---------------Header---------------*/
+
+#header-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    border-bottom: 1px solid black;
+    background-image: url('tileable-wood.jpg');
+    box-shadow: 1px 1px 4px 4px rgba(121,103,89,.4);
+    z-index: 1050;
+}
+
+.logo {
+    width: 140px;
+    height: 63px;
+}
+
+
+.title {
+    font-family: "Calistoga", sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: .04rem;
+    color: black;
+    text-shadow: #eee 1px 1px 0, 3px 5px 2px #474747;
+    margin-left: 146px;
+}
+
+.moose {
+    position: absolute;
+    top: 0;
+}
+
+.leather {
+    position: absolute;
+    top: 29px;
+}
+
+.nav-text {
+    font-family: "Squada One", sans-serif;
+    font-size: 24px;
+    font-variant: small-caps;
+    letter-spacing: .1rem;
+}
+
+/* BS OR */
+.navbar {
+    height: 80px;
+    z-index: 1100;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/*BS OR*/
+a.navbar-brand {
+    padding: 0;
+    margin: 0;
+}
+
+/* BS OR */
+a.nav-link {
+    color: black;
+    text-shadow: 1px 1px 0 #eee;
+
+}
+
+a.nav-link:hover {
+    background: rgba(0,0,0,.2);
+    border-radius: 8px;
+    color: rgba(255,255,255,.9);
+    text-shadow: 1px 1px 0 rgba(0,0,0,.7);
+}
+
+/*BS OR*/
+.navbar-toggler {
+    padding: 4px;
+    border: 2px solid black;
+    background-color: rgba(115, 100, 81, .75);
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='lightgray' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+    box-shadow: 3px 3px 2px #474747;
+}
+
+
+/* styles for tablet */
+@media (min-width: 768px) {
+    #header-bg {
+        height: 80px;
+        box-shadow: 1px 1px 4.5px 4.5px rgba(121,103,89,.4);
+    }
+
+    .logo {
+        width: 151px;
+        height: 68px;
+    }
+
+    .title {
+        font-size: 32px;
+        margin-left: 155px;
+    }
+
+    .leather {
+        top: 32px;
+    }
+
+    .nav-text {
+        font-size: 27px;
+    }
+
+    /* BS OR */
+    .navbar {
+        height: 85px;
+    }
+}
+
+/* styles for desktop */
+@media (min-width: 992px) {
+    #header-bg {
+        height: 88px;
+        box-shadow: 1px 1px 5px 5px rgba(121,103,89,.4);
+    }
+
+    .logo {
+        width: 167px;
+        height: 75px;
+    }
+
+    .title {
+        font-size: 35px;
+        margin-left: 175px;
+    }
+
+    .leather {
+        top: 35px;
+    }
+
+    .nav-text {
+        font-size: 30px;
+    }
+
+    /* BS OR */
+    .navbar {
+        height: 93px;
+    }
+
+}
+
+/*---------------Footer---------------*/
+
+footer div {
+    font-size: 12px;
+    margin: auto 50px;
+}
+
+.copyright {
+    text-align: center;
+}
+
+/* styles for tablet */
+@media (min-width: 768px) {
+
+    footer div {
+        font-size: 13px;
+    }
+}
+
+/* styles for desktop */
+@media (min-width: 992px) {
+
+    footer div {
+        font-size: 14px;
+    }
+}
