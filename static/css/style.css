@@ -139,7 +139,7 @@ a.nav-link {
     font-size: 24px;
     font-variant: small-caps;
     letter-spacing: .1rem;
-    text-shadow: 1px 1px 0 #eee;
+    text-shadow: 1px 1px 0 #eee, 3px 4px 2px #474747;
     color: black;
 }
 
@@ -147,7 +147,7 @@ a.nav-link:hover {
     background: rgba(0,0,0,.2);
     border-radius: 8px;
     color: rgba(255,255,255,.9);
-    text-shadow: 1px 1px 0 rgba(0,0,0,.7);
+    text-shadow: 1px 1px 0 rgba(0,0,0,.7), 3px 4px 2px #474747;
 }
 
 /*BS OR*/
