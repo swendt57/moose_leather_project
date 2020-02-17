@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+# TODO verify that the viewport setting in base.html allows users to zoom
 
 def index(request):
     """Displays the index page"""
