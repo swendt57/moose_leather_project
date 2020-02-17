@@ -87,9 +87,6 @@ p {
     left: 0;
     width: 100%;
     height: 75px;
-    border-bottom: 1px solid black;
-    background-image: url('tileable-wood.jpg');
-    box-shadow: 1px 1px 4px 4px rgba(121,103,89,.4);
     z-index: 1050;
 }
 
@@ -121,13 +118,22 @@ p {
 
 /* BS OR */
 .navbar {
-    height: 80px;
+    /* do NOT put a height value here; it blocks the background on the expanded nav*/
+    background-image: url('tileable-wood.jpg'); /* background for expanded nav */
     z-index: 1100;
     max-width: 1400px;
     margin: 0 auto;
+
 }
 
-/*BS OR*/
+/* BS OR */
+[class*="navbar-expand"] {
+    /* bottom shadow on the navbar - do NOT put this in header-bg for small screens */
+    box-shadow: 1px 1px 4px 4px rgba(121,103,89,.4);
+    border-bottom: 1px solid black;
+}
+
+/* BS OR */
 a.navbar-brand {
     padding: 0;
     margin: 0;
@@ -136,13 +142,14 @@ a.navbar-brand {
 /* BS OR */
 a.nav-link {
     font-family: "Squada One", sans-serif;
-    font-size: 24px;
+    font-size: 27px;
     font-variant: small-caps;
     letter-spacing: .1rem;
-    text-shadow: 1px 1px 0 #eee, 3px 4px 2px #474747;
+    text-shadow: 1px 1px 0 #eee, 2px 3px 2px #474747;
     color: black;
 }
 
+/* BS OR */
 a.nav-link:hover {
     background: rgba(0,0,0,.2);
     border-radius: 8px;
@@ -162,8 +169,10 @@ a.nav-link:hover {
 
 /* styles for tablet */
 @media (min-width: 768px) {
+
     #header-bg {
-        height: 80px;
+        height: 85px;
+        background-image: url('tileable-wood.jpg'); /* background for un-expanded nav */
         box-shadow: 1px 1px 4.5px 4.5px rgba(121,103,89,.4);
     }
 
@@ -183,20 +192,31 @@ a.nav-link:hover {
     }
 
     a.nav-link {
-        font-size: 27px;
+        font-size: 29px;
+        text-shadow: 1px 1px 0 #eee, 3px 3px 2px #474747;
     }
 
     /* BS OR */
     .navbar {
+        background-image: none;
         height: 85px;
     }
+
+    /* BS OR */
+    [class*="navbar-expand"] {
+        box-shadow: none;
+    }
+
+
 }
+
 
 /* styles for desktop */
 @media (min-width: 992px) {
+
     #header-bg {
-        height: 88px;
-        box-shadow: 1px 1px 5px 5px rgba(121,103,89,.4);
+        height: 90px;
+        box-shadow: 1px 1px 5px 5px rgba(121, 103, 89, .4);
     }
 
     .logo {
@@ -215,13 +235,19 @@ a.nav-link:hover {
 
     /* BS OR */
     .navbar {
-        height: 93px;
+        height: 90px;
+    }
+
+    /* BS OR */
+    [class*="navbar-expand"] {
+        box-shadow: none;
+        border-bottom: none;
     }
 
     /* BS OR */
     a.nav-link {
-        font-size: 30px;
-        /* moves navigation up off of "wood seam" on large screens*/
+        font-size: 31px;
+        /* moves nav buttons up off of "wood seam" on large screens*/
         margin-bottom: 7px;
     }
 
