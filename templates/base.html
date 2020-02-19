@@ -1,5 +1,4 @@
 {% load static %}
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +11,15 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     {# <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">#}
+
+    <style>
+    {# highlights the nav button for the page the user is on #}
+    {{ page }}
+        {
+            color: rgba(255,247,100,.9);
+            text-shadow: 1px 1px 0 rgba(0,0,0,.8), 2px 3px 2px #474747;
+        }
+    </style>
 
     <title>{{ page_title }}</title>
 </head>
@@ -50,10 +58,10 @@
                         <a class="nav-link" href="{% url 'index' %}"><span class="home">Home</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="top-ten">Placeholder</span></a>
+                        <a class="nav-link" href="{% url 'retail' %}"><span class="retail">Retail Store</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="comparisons">Placeholder</span></a>
+                        <a class="nav-link" href="{% url 'consigned' %}"><span class="consigned">Consignment</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#"><span class="maps">Placeholder</span></a>

@@ -12,15 +12,19 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 
+if os.path.exists('env.py'):
+    import env
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+print("base: " + BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ev=(2fp44xekrc27ay@dv&p^(gp=x6p915*sqepw-g3y7b3f*&'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,6 +44,7 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'home',
     'accounts',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -67,6 +72,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.media',  # need this to use the media folder
             ],
         },
     },
@@ -134,6 +140,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+print("media: " + MEDIA_ROOT)
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
