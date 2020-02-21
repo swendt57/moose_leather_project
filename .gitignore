@@ -6,3 +6,5 @@ venv/
 env.py
 my.env
 do_not_commit/
+
+support/graphics/

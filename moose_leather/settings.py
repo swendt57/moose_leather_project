@@ -11,14 +11,14 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import dj_database_url
+import sys
 
 if os.path.exists('env.py'):
     import env
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-print("base: " + BASE_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'home',
     'accounts',
     'products',
+    'orders',
 ]
 
 MIDDLEWARE = [
@@ -84,13 +85,29 @@ WSGI_APPLICATION = 'moose_leather.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+LOCAL_DB = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
 
+if 'test' in sys.argv or 'test_coverage' in sys.argv:  # Testing and coverage - thanks to Stack Overflow user shanyu
+    DATABASES = LOCAL_DB
+elif "DATABASE_URL" in os.environ:
+    DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("Database URL not found. Using SQLite instead.")
+    DATABASES = LOCAL_DB
+
+# Covers regular testing and django-coverage - thanks to Stack Overflow user shanyu
+# if 'test' in sys.argv or 'test_coverage' in sys.argv:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.sqlite3',
+#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#         }
+#     }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -140,8 +157,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-print("media: " + MEDIA_ROOT)
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

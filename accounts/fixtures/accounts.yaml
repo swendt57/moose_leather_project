@@ -1,0 +1,35 @@
+-   model: accounts.shippinginfo
+    pk: 10
+    fields:
+        name: Leslie Viviani
+        address1: 1234 Main
+        address2: null
+        city: Gotham
+        state: NY
+        postal_code: '11111'
+        phone: null
+-   model: accounts.shippinginfo
+    pk: 5
+    fields:
+        name: Steve Wendt
+        address1: 2220 Ridge View Dr
+        address2: null
+        city: San Diego
+        state: CA
+        postal_code: '92105'
+        phone: 619-964-1865
+-   model: accounts.userprofile
+    pk: 1
+    fields:
+        user: 1
+        shipping_info: 5
+-   model: accounts.userprofile
+    pk: 2
+    fields:
+        user: 3
+        shipping_info: 10
+-   model: accounts.userprofile
+    pk: 3
+    fields:
+        user: 2
+        shipping_info: null

@@ -1,0 +1,52 @@
+-   model: products.category
+    pk: 1
+    fields:
+        name: Harnesses
+        description: Blah, blah, blah...
+        other_info: ''
+-   model: products.category
+    pk: 2
+    fields:
+        name: Chaps
+        description: Blah, blah, blah...
+        other_info: ''
+-   model: products.category
+    pk: 3
+    fields:
+        name: Vests
+        description: Blah, blah, blah...
+        other_info: ''
+-   model: products.category
+    pk: 4
+    fields:
+        name: Shirts
+        description: Blah, blah, blah...
+        other_info: ''
+-   model: products.category
+    pk: 5
+    fields:
+        name: Other
+        description: Blah, blah, blah...
+        other_info: ''
+-   model: products.item
+    pk: 1
+    fields:
+        name: Bulldog Harness
+        description: Blah, blah, blah...
+        price: '125.00'
+        is_consignment: false
+        commission_percent: '0.25'
+        category: 1
+        image: images/no_image.png
+        user: null
+-   model: products.item
+    pk: 2
+    fields:
+        name: Leather shirt
+        description: Custom-made leather shirt with blue piping
+        price: '250.00'
+        is_consignment: true
+        commission_percent: '0.25'
+        category: 4
+        image: images/dwnld_6-28013_018.jpg
+        user: null
