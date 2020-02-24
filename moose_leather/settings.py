@@ -100,15 +100,6 @@ else:
     print("Database URL not found. Using SQLite instead.")
     DATABASES = LOCAL_DB
 
-# Covers regular testing and django-coverage - thanks to Stack Overflow user shanyu
-# if 'test' in sys.argv or 'test_coverage' in sys.argv:
-#     DATABASES = {
-#         'default': {
-#             'ENGINE': 'django.db.backends.sqlite3',
-#             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#         }
-#     }
-
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 

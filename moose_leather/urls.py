@@ -27,5 +27,5 @@ urlpatterns = [
     path('', index, name='index'),
     path('accounts/', include(urls_accounts)),
     path('products/', include(urls_products)),
-    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
