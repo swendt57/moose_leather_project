@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 import os
 import dj_database_url
 import sys
+from django.contrib.messages import constants as messages
 
 if os.path.exists('env.py'):
     import env
@@ -160,3 +161,8 @@ EMAIL_PORT = 465
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = os.environ.get('EMAIL_ADDRESS')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}

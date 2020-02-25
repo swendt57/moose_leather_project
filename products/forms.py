@@ -1,5 +1,5 @@
 from django import forms
-from .models import Item, Category
+from .models import Item
 
 
 class ConsignmentForm(forms.ModelForm):

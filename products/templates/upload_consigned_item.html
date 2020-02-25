@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap_tags %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <p>To submit an item for sale, blah, blah, blah and fill out the following form:</p>
+
+        <form action="{% url 'submit_consigned' %}" method="POST" enctype="multipart/form-data">
+
+            {% csrf_token %}
+
+            {{ consignment_form | as_bootstrap }}
+
+            <input type="checkbox" name="agreement" id="agreement"> I have read and agree to the <a href="{% static 'pdfs/consignment_agreement.pdf' %}" target="_blank">consignment agreement.</a>
+            <br/><br/>
+            <input type="submit" class="btn btn-success" id="consign-submit" value="Submit Item For Sale" disabled="disabled">
+
+        </form>
+
+{#        <form action="{% url 'submit_consigned' %}" method="POST">#}
+{#            {%  csrf_token %}#}
+{#            <div class="form-group">#}
+{#                <label for="name">Item Name:</label>#}
+{#                <input type="text" class="form-control" name="name" id="name" placeholder="Name of item for sale">#}
+{#                <label for="description">Description:</label>#}
+{#                <textarea name="description" class="form-control" id="description"#}
+{#                          placeholder="Describe the item for sale..."></textarea>#}
+{#                <label for="price">Sale Price:</label>#}
+{#                <input type="number" class="form-control" name="price" id="price" placeholder="(include our 25% commission in the total)">#}
+{#                <label for="category">Category:</label>#}
+{#                <select class="form-control" name="category" id="category"></select>#}
+{#                <label for="image">Upload Photo:</label>#}
+{#                <input type="file" class="form-control" name="image">#}
+{##}
+{#                <input type="submit" class="btn btn-success" value="Submit Item For Sale">#}
+{#            </div>#}
+{#        </form>#}
+
+    </div>
+
+    <script>
+        document.getElementById('agreement').addEventListener('click', function (e) {
+            document.getElementById('consign-submit').disabled = !e.target.checked;
+        });
+    </script>
+
+{% endblock %}
