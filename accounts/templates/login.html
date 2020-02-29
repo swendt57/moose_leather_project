@@ -9,9 +9,9 @@
         {% csrf_token %}
         {{  login_form | as_bootstrap }}
 
-        <p><a href="{% url 'password_reset' %}">Forgot your Password?</a></p>
+        <p><a href="{% url 'password_reset' %}" class="ml-light">Forgot your Password?</a></p>
 
-        <button type="submit" class="btn btn-primary">Log in</button>
+        <button type="submit" class="btn ml-btn ml-bdr-lt">Log in</button>
     </form>
 
 {% endblock %}

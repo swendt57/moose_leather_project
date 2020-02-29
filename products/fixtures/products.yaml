@@ -31,7 +31,7 @@
 -   model: products.item
     pk: 1
     fields:
-        name: Bulldog Harness
+        title: Bulldog Harness
         description: Blah, blah, blah...
         price: '125.00'
         is_consignment: false
@@ -42,7 +42,7 @@
 -   model: products.item
     pk: 2
     fields:
-        name: Leather shirt
+        title: Leather shirt
         description: Custom-made leather shirt with blue piping
         price: '250.00'
         is_consignment: true

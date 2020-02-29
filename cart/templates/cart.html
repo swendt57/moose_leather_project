@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static from static %}
+{% load bootstrap_tags %}
+
+{% block head_js %}
+    <script src="{% static 'js/photo_handler.js' %}"></script>
+    <script src="{% static 'js/sizer.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+            <div class="row card-block justify-content-center">
+
+            {% for c_item in cart_items %}
+                <div class="col-sm-6 col-md-4 col-lg-3 card-container">
+                    <div class="card card-cart">
+                        <div class="item-photo"
+                             style="background-image: url('{{ MEDIA_URL }}{{ c_item.item.image }}')"></div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ c_item.item.title }}</h5>
+                            <div class="card-subtitle">
+                                <p class="cart-qty">Qty: {{ c_item.quantity }}&nbsp;&nbsp;@</p>
+                                <p class="cart-price">${{ c_item.item.price }}</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'adjust_cart' c_item.id %}">
+                                {% csrf_token %}
+                                <div class="card-subtitle">
+                                    <p class="card-text">
+                                        <label for="quantity">New Qty: </label>
+                                        <input type="number" name="quantity" min="0" max="10">
+                                    </p>
+                                    <p class="card-text">
+                                        <button type="submit" class="btn ml-btn">Adjust Cart</button>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            {% endfor %}
+
+        </div>
+        <div class="row justify-content-center">
+            <div class="card-cart cart-total">
+                <p>Total: <i class="fas fa-dollar-sign"></i> {{ total }}</p>
+                {#    <a href=" {% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign"></span> Checkout</a>#}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

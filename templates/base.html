@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=yes">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -13,8 +13,8 @@
     {# <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">#}
 
     <style>
-    {# highlights the nav button for the page the user is on #}
-    {{ page }}
+        {# highlights the nav button for the page the user is on #}
+        {{ page }}
         {
             color: rgba(255,247,100,.9);
             text-shadow: 1px 1px 0 rgba(0,0,0,.8), 2px 3px 2px #474747;
@@ -71,19 +71,31 @@
             </div>
         </nav>
     </div>
-
 </header>
 
+
+
 <section>
-    {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            <div class="messages">
-                {{ message }}
-            </div>
+    <div class="container">
+        <div class="cart-container" style="float:right;">
+            <p><a href="{% url 'view_cart' %}">
+                <i class="fa fa-shopping-cart"></i> Cart
+                {% if item_count > 0 %}
+                    <label class="badge badge-warning">{{ item_count }}</label>
+                {% endif %}
+            </a></p>
         </div>
-        {% endfor %}
-    {% endif %}
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-success{{ message.tags }}">
+                    <div class="messages">
+                        {{ message }}
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
 
     <div class="container">
         <div class="page-heading">{{ page_heading }}</div>
@@ -96,16 +108,23 @@
 <footer>
     <div class="container">
         {% if user.is_authenticated %}
-        <p><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a> | <a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Log Out</a> | <a href="{% url 'change_password' %}"><i class="fa fa-key"></i> Change Password</a></p>
+            <p><a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a> | <a href="{% url 'logout' %}"><i
+                    class="fa fa-sign-out"></i> Log Out</a> | <a href="{% url 'change_password' %}"><i
+                    class="fa fa-key"></i> Change Password</a> | signed in
+                as: {{ user.first_name }} {{ user.last_name }}</p>
         {% else %}
-        <p><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a> | <a href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a> </p>
+            <p><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a> | <a
+                    href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a></p>
         {% endif %}
-        <p class="copyright"> &copy;2020 Moose Leather</p>
+
+    </div>
+    <p class="copyright"> &copy;2020 Moose Leather</p>
     </div>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+{% block head_js %}{% endblock %}
 
 </body>
 </html>

@@ -34,10 +34,10 @@ class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     image = models.ImageField(upload_to='images', default='images/no_image.png', validators=[validate_image])
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT)  # required for consignment item
-    date_created = models.DateTimeField(blank=True, default=datetime.now)
+    date_created = models.DateTimeField(blank=True, default=datetime.now())
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Size(models.Model):

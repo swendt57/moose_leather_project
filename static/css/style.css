@@ -2,6 +2,16 @@
 
 /* BS OR = Bootstrap Override */
 
+/*---------------Colors---------------*/
+
+/*ml-dark {*/
+/*    color: #796553;*/
+/*}*/
+
+/*ml-light {*/
+/*    color: bisque;*/
+/*}*/
+
 /*---------------General Styles---------------*/
 
 html, body {
@@ -16,13 +26,13 @@ html, body {
 
 body {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
+    font-size: 15px;
     color: white;
 }
 
 /* BS OR */
 .container {
-    max-width: 95%;
+    max-width: 90%;
     padding: 0;
 }
 
@@ -41,6 +51,42 @@ p {
     margin: 20px 10px;
 }
 
+a {
+    color: burlywood;
+    text-decoration: none;
+}
+
+a:hover {
+    color: brown;
+    text-decoration: underline;
+}
+
+.ml-btn {
+    padding: 5px;
+    /*background-color: #796553;*/
+    background-image: linear-gradient(#ac9886, #796553);
+    margin-right: 3px;
+    /*text-shadow: .5px .5px 0 bisque;*/
+    border: 1px solid black;
+    color: black;
+    font-weight: bold;
+}
+
+.ml-btn:hover{
+    /*background-color: #ac9886;*/
+    background-image: linear-gradient(#796553, #ac9886);
+    color: bisque;
+    text-shadow: .5px .5px 0 black;
+}
+
+.ml-btn:focus,
+.ml-btn:active {
+    box-shadow: 1px 1px 5px 5px rgba(255,255,255,.5);
+}
+
+.ml-bdr-lt {
+    border: 1px solid bisque;
+}
 
 /* styles for tablet */
 @media (min-width: 768px) {
@@ -68,7 +114,7 @@ p {
     }
 
     .container {
-        max-width: 80%;
+        /*max-width: 80%;*/
     }
 
     section {
@@ -132,7 +178,7 @@ p {
 /* BS OR */
 [class*="navbar-expand"] {
     /* bottom shadow on the navbar - do NOT put this in header-bg for small screens */
-    box-shadow: 1px 1px 4px 4px rgba(255,247,100,.8);
+    box-shadow: 1px 1px 3px 3px rgba(255,255,255,.6);
     border-bottom: 1px solid black;
     /*121,103,89,.4*/
 }
@@ -158,8 +204,8 @@ a.nav-link {
 a.nav-link:hover {
     background: rgba(0,0,0,.2);
     border-radius: 8px;
-    color: rgba(255,255,255,.9);
-    text-shadow: 1px 1px 0 rgba(0,0,0,.7), 2px 3px 2px #474747;
+    /*color: rgba(255,255,255,.9);*/
+    /*text-shadow: 1px 1px 0 rgba(0,0,0,.7), 2px 3px 2px #474747;*/
 }
 
 /*BS OR*/
@@ -171,6 +217,10 @@ a.nav-link:hover {
     box-shadow: 3px 3px 2px #474747;
 }
 
+.cart-container p {
+    margin: 0;
+}
+
 
 /* styles for tablet */
 @media (min-width: 768px) {
@@ -178,7 +228,7 @@ a.nav-link:hover {
     #header-bg {
         height: 85px;
         background-image: url('tileable-wood.jpg'); /* background for un-expanded nav */
-        box-shadow: 1px 1px 4.5px 4.5px rgba(255,247,100,.8);
+        box-shadow: 1px 1px 3.5px 3.5px rgba(255,255,255,.6);
     }
 
     .logo {
@@ -220,8 +270,10 @@ a.nav-link:hover {
 
     #header-bg {
         height: 90px;
-        box-shadow: 1px 1px 5px 5px rgba(255,247,100,.8);
+        box-shadow: 1px 1px 4px 4px rgba(255,255,255,.6);
     }
+
+    /*rgba(255,247,100,.8)*/
 
     .logo {
         width: 167px;
@@ -257,75 +309,185 @@ a.nav-link:hover {
 
 }
 
+/*---------------Home---------------*/
+
+.home-text {
+    text-align: justify;
+}
+
+.steve-in-store {
+    width: 200px;
+    margin: 5px 15px 10px 15px;
+    border: 1px solid bisque;
+}
+
+/* styles for tablet */
+@media (min-width: 768px) {
+    .steve-in-store {
+        width: 300px;
+        margin: 5px 20px 20px 20px;
+    }
+}
+
+/* styles for desktop */
+@media (min-width: 992px) {
+    .steve-in-store {
+        width: 350px;
+    }
+}
 
 /*---------------Products---------------*/
 
+.item-container {
+    padding: 0;
+}
+
+.panel-body {
+    border: 1px solid bisque;
+    margin: 5px;
+    /*background-image: linear-gradient(#796553, #ac9886);*/
+    /*background-image: linear-gradient(#ac9886, #796553);**/
+    background: #796553;
+    color: bisque;
+}
+
+.panel-body h4 {
+    margin: 5px 10px auto 10px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,1);
+    min-height: 60px;
+}
+
+/*.panel-body {*/
+/*    border: 1px solid bisque;*/
+/*    margin: 5px;*/
+/*    background-image: linear-gradient(#ac9886, #796553);*/
+/*    !*background: #796553;*!*/
+/*    color: bisque;*/
+/*}*/
+
+/*.panel-body h4 {*/
+/*    margin: 5px 10px auto 10px;*/
+/*    text-shadow: 1px 1px 1px rgba(255,255,255,.5);*/
+/*    min-height: 60px;*/
+/*    color: black;*/
+/*}*/
+
 .item-photo {
-    /*text-align: center;*/
     background-size: 100% 100%;
     border: 1px solid black;
     margin: auto;
 }
 
-.panel {
-    border: 1px solid red;
-}
-
-.panel-default {
-    border-color: transparent;
-    padding: 0 10px;
-}
-
-.panel-body {
-    /*width: 300px;*/
-    /*height: 400px;*/
-    /*border: 1px solid #ddd;*/
-    border: 1px solid white;
-    background-image: linear-gradient(#796553, #ac9886);
-    margin: 20px;
-    /*text-align: center;*/
-}
-
-.panel-body h4 {
-    margin: 5px auto;
-    color: bisque;
-    text-shadow: 2px 2px 1px rgba(0,0,0,.8);
-}
-
-/* #eee 1px 1px 0  */
-
-/*div.panel-body > p {*/
-/*    color: red;*/
-/*    padding-top: 200px;*/
-/*}*/
-
-.product-description {
-    /*min-height: 150px;*/
-    color: black;
+.item-info {
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
     /*border: 1px solid white;*/
 }
 
 .description {
-    min-height: 75px;
+    min-height: 70px;
 }
 
-/*.panel {*/
-/*    min-height: 375px;*/
-/*    !*max-width: 275px;*!*/
-/*    border: 1px solid white;*/
-/*    background-image: linear-gradient(#796553, #ac9886);*/
-/*    margin: 20px;/*/
+.item-info label {
+    color: bisque;
+    /*text-shadow: none;*/
+}
+
+.item-info input {
+    width: 40px;
+}
+
+.item-price {
+    float: left;
+    position:absolute;
+    margin: 10px 0 0 15px;
+}
+
+.item-qty {
+    float: right;
+}
+
+.item-form {
+    margin-top: 25px;
+    text-align: right;
+}
+
+
+/* styles for tablet */
+@media (min-width: 768px) {
+    .description {
+        min-height: 100px;
+    }
+}
+
+/* styles for desktop */
+@media (min-width: 992px) {
+    .description {
+        min-height: 120px;
+    }
+}
+
+/*---------------Cart---------------*/
+/* BS OR */
+.card {
+    padding: 0;
+    margin: 5px;
+}
+
+.card-container {
+    padding: 0;
+}
+
+.card label {
+    color: bisque;
+}
+
+/* BS OR */
+.card-body {
+    margin: 0;
+    padding: 0;
+}
+
+/*!* BS OR *!*/
+/*.card-subtitle {*/
+/*    color: bisque;*/
 /*}*/
 
-/*.panel h4 {*/
-/*    text-align: center;*/
-/*    padding: 10px;*/
-/*    margin: 10px;*/
-/*}*/
+.card-cart {
+    border: 1px solid bisque;
+    background: #796553;
+    color: bisque;
+}
 
-/*.product-description {*/
-/*    min-height: 40px;*/
-/*}*/
+.card-cart h5 {
+    margin: 5px;
+    text-shadow: 2px 2px 1px rgba(0,0,0,1);
+    min-height: 50px;
+}
+
+.card-text {
+    text-align: right;
+    margin:5px;"
+}
+
+.card-text input {
+    width:50px;
+    margin-right:5px;
+}
+
+.cart-total {
+    display: inline-block;
+    /*margin-left: -10px;*/
+}
+
+.cart-price {
+    float: right;
+    margin:5px 5px 15px 5px;
+}
+
+.cart-qty {
+    float: left;
+    margin: 5px;
+}
 
 /*---------------Footer---------------*/
 

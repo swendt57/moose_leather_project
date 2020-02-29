@@ -22,7 +22,7 @@ def get_consignment_items(request):
 
 
 @login_required
-def upload_consigned_item(request):
+def render_consigned_item_upload(request):
     """Displays the form for a user to upload a consigned item"""
     consignment_form = ConsignmentForm
 

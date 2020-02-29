@@ -2,6 +2,14 @@
 {% load static %}
 {% load bootstrap_tags %}
 
+{% block head_js %}
+    <script>
+        document.getElementById('agreement').addEventListener('click', function (e) {
+            document.getElementById('consign-submit').disabled = !e.target.checked;
+        });
+    </script>
+{% endblock %}
+
 {% block content %}
 
     <div class="container-fluid">
@@ -40,11 +48,5 @@
 {#        </form>#}
 
     </div>
-
-    <script>
-        document.getElementById('agreement').addEventListener('click', function (e) {
-            document.getElementById('consign-submit').disabled = !e.target.checked;
-        });
-    </script>
 
 {% endblock %}

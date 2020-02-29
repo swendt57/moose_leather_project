@@ -1,29 +1,35 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block head_js %}
+    <script src="{% static 'js/photo_handler.js' %}"></script>
+{% endblock %}
 
 {% block content %}
 
-<div class="container-fluid">
+<div class="container">
     <div class="row row-flex">
         {% for item in consigned_items %}
-        <div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-6 col-md-4 display panel-body">
-            <h4>{{ item.title }}</h4>
-            <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')"></div>
-            <div class="product-description">
-                <p class="description">{{ item.description }} now is the time for all good me to come to the aid of their country</p>
-                <p>${{ item.price }}</p>
+
+            <div class="col-sm-6 col-lg-4 item-container">
+                <div class="panel-body">
+                    <h4>{{ item.title }}</h4>
+                    <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')"></div>
+                    <div class="item-info">
+                        <p class="description">{{ item.description }} now is the time for all good me to come to the aid
+                            of their country</p>
+                        <div class="item-price">${{ item.price }}</div>
+                        <div class="item-form">
+                            <form method="POST" action="{% url 'add_to_cart' item.id %}">
+                                {%  csrf_token %}
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class="btn ml-btn">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-{#                <form method="POST" action="{% url 'add_to_cart' product.id %}">#}
-{#                    {% csrf_token %}#}
-{#                    <div class="input-group">#}
-{#                        <input type="number" name="quantity" min="1" max="999" class="form-control" placeholder="Quantity" required>#}
-{#                        <span class="input-group-btn">#}
-{#                            <button type="submit" class="btn btn-success">Add</button>#}
-{#                        </span>#}
-{#                    </div>#}
-{#                </form>#}
-
-        </div>
         {% endfor %}
     </div>
 </div>
