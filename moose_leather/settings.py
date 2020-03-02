@@ -76,6 +76,7 @@ TEMPLATES = [
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',  # need this to use the media folder
                 'cart.contexts.cart_contents',
+                'storages',
             ],
         },
     },
@@ -141,6 +142,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
+
+AWS_STORAGE_BUCKET_NAME = 'moose-leather'
+AWS_REGION_NAME = 'us-west-2'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_SECRET_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
