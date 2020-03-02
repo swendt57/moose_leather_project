@@ -5,20 +5,20 @@ from django.shortcuts import render, redirect, reverse
 # settings.py in TEMPLATES>OPTIONS> content_processors
 def view_cart(request):
     """Renders the cart contents page"""
-    print("in view cart")
     return render(request, 'cart.html', {'page_title': 'Shopping Cart', 'page_heading': 'Shopping Cart', 'page': 'TBD'})
 
 
 def add_to_cart(request, id):
     """Adds the quantity of the specified product to the cart"""
     quantity = int(request.POST.get('quantity'))
+    referer = request.META.get('HTTP_REFERER')
 
     cart = request.session.get('cart', {})
     cart[id] = cart.get(id, quantity)
 
     request.session['cart'] = cart
 
-    return redirect(reverse("retail"))
+    return redirect(referer)
 
 
 def adjust_cart(request, id):

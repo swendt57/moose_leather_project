@@ -7,8 +7,6 @@ def cart_contents(request):
 
     cart = request.session.get('cart', {})
 
-
-
     cart_items = []
     total = 0
     item_count = 0
@@ -18,8 +16,5 @@ def cart_contents(request):
         total += quantity * item.price
         item_count += quantity
         cart_items.append({'id': identifier, 'quantity': quantity, 'item': item})
-
-    # for x in cart_items:
-    #     print(c)
 
     return {'cart_items': cart_items, 'total': total, 'item_count': item_count}

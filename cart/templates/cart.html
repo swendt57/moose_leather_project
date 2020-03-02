@@ -4,7 +4,7 @@
 
 {% block head_js %}
     <script src="{% static 'js/photo_handler.js' %}"></script>
-    <script src="{% static 'js/sizer.js' %}"></script>
+    <script src="{% static 'js/card_sizer.js' %}"></script>
 {% endblock %}
 
 {% block content %}
@@ -17,7 +17,7 @@
                     <div class="card card-cart">
                         <div class="item-photo"
                              style="background-image: url('{{ MEDIA_URL }}{{ c_item.item.image }}')"></div>
-                        <div class="card-body">
+                        <div class="card-body" id="card-info">
                             <h5 class="card-title">{{ c_item.item.title }}</h5>
                             <div class="card-subtitle">
                                 <p class="cart-qty">Qty: {{ c_item.quantity }}&nbsp;&nbsp;@</p>
@@ -28,14 +28,22 @@
                             <form method="POST" action="{% url 'adjust_cart' c_item.id %}">
                                 {% csrf_token %}
                                 <div class="card-subtitle">
+                                {%  if c_item.item.is_consignment %}
+                                    <input type="hidden" name="quantity" value="0">
+                                    <p class="card-text" id="remove-from-cart">
+                                        <button type="submit" class="btn ml-btn">Remove from Cart</button>
+                                    </p>
+                                {% else %}
                                     <p class="card-text">
                                         <label for="quantity">New Qty: </label>
-                                        <input type="number" name="quantity" min="0" max="10">
+                                        <input type="number" name="quantity" min="0" max="10" value="{{ c_item.quantity }}">
                                     </p>
                                     <p class="card-text">
                                         <button type="submit" class="btn ml-btn">Adjust Cart</button>
                                     </p>
+                                {% endif %}
                                 </div>
+
                             </form>
                         </div>
 

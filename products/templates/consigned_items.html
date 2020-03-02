@@ -33,24 +33,5 @@
         {% endfor %}
     </div>
 </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-    <script>
-    $(document).ready(function() {
-        let photo = $('.item-photo');
-        let parent = photo.parent();
-        let photoWidth = parent.width() - 10;
-        let photoHeight = photoWidth * .75;
-
-        photo.css({'width': photoWidth, 'height': photoHeight});
-
-        $(window).resize(function(e) {
-            photoWidth = parent.width() -20;
-            photoHeight = photoWidth * .75;
-            photo.css({'width': photoWidth, 'height': photoHeight});
-        });
-    });
-
-
-    </script>
 
 {% endblock %}
