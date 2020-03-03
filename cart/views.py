@@ -18,7 +18,7 @@ def add_to_cart(request, id):
 
     request.session['cart'] = cart
 
-    return redirect(referer)
+    return redirect(referer)  # send them back from whence they came
 
 
 def adjust_cart(request, id):

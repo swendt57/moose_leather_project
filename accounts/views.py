@@ -30,6 +30,7 @@ def login(request):
 
     if request.method == "POST":
         login_form = UserLoginForm(request.POST)
+        referer = request.META.get('HTTP_REFERER')
 
         if login_form.is_valid():
             user = auth.authenticate(username=request.POST['username'],
@@ -38,7 +39,7 @@ def login(request):
             if user:
                 auth.login(user=user, request=request)
                 messages.success(request, 'You have successfully logged in!')
-                return redirect(reverse('index'))
+                return redirect(referer)  # send them back from whence they came
             else:
                 login_form.add_error(None, 'Your username or password is invalid')
 
