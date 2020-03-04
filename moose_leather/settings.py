@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'orders',
     'cart',
     'storages',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -137,7 +138,7 @@ USE_I18N = True
 
 USE_L10N = True
 
-USE_TZ = False
+USE_TZ = False  # leave this at False unless timezone info is critical!
 
 
 # Static files (CSS, JavaScript, Images)
@@ -165,6 +166,9 @@ DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # MEDIA_URL = '/media/'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
+
+STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE')
+STRIPE_SECRET = os.environ.get('STRIPE_SECRET')
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 

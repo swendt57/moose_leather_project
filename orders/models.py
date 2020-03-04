@@ -1,12 +1,14 @@
 from django.db import models
 from products.models import Item, Size
 from accounts.models import ShippingInfo
+from datetime import datetime
 
 
 class Order(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
     order_info = models.CharField(max_length=200, null=True, blank=True)
     total = models.DecimalField(max_digits=6, decimal_places=2, null=False)
+    date = models.DateTimeField(blank=True, null=True, default=datetime.now)
     shipping_info = models.ForeignKey(ShippingInfo, blank=False, null=True, on_delete=models.SET_NULL)  # if shipping
     # info is stored, pre-populate the web form
 

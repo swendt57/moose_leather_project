@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% load static from static %}
+{% load static %}
 {% load bootstrap_tags %}
 
 {% block head_js %}
@@ -55,12 +55,23 @@
             {% endfor %}
 
         </div>
+        <!-- TODO try to update the class names for cart-qty and cart-price - when I change them to left and right the CSS breaks-->
         <div class="row justify-content-center">
             <div class="card-cart cart-total">
-                <p>Total: <i class="fas fa-dollar-sign"></i> {{ total }}</p>
-                {#    <a href=" {% url 'checkout' %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-ok-sign"></span> Checkout</a>#}
+                <p class="cart-qty">Total: <i class="fas fa-dollar-sign"></i> {{ total }}</p>
+                <p class="cart-price"><button onclick="window.location.href='{% url 'checkout' %}'" class="btn ml-btn"><i class="far fa-check-square"></i> Checkout</button></p>
             </div>
         </div>
+    </div>
+
+    <div>
+        <h2>Test</h2>
+         <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ key }}"
+            data-description="A Django Charge"
+            data-amount="500"
+            data-locale="auto">
+        </script>
     </div>
 
 {% endblock %}
