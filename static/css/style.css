@@ -516,12 +516,17 @@ form label {
     color: burlywood;
 }
 
-input:read-write,
-input[type='file'],
-.select-list,
-.select-list option,
-.select-list:focus {
-    background-color: bisque;
+/*input:read-write,*/
+/*input[type='file'],*/
+/*.select-list,*/
+/*.select-list option,*/
+/*.select-list:focus {*/
+/*    background-color: bisque;*/
+/*}*/
+
+/* BS OR */
+.form-control {
+    background-color: bisque
 }
 
 .error-msg {
@@ -530,4 +535,19 @@ input[type='file'],
 
 .has-error input {
     background-color: darksalmon;
+}
+
+
+/*---------------Tables---------------*/
+
+table {
+    max-width:650px;
+}
+
+th {
+    color: burlywood;
+}
+
+td {
+    color: bisque;
 }

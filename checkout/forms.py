@@ -7,18 +7,26 @@ class MakePaymentForm(forms.Form):
     MONTH_CHOICES = [(i, i) for i in range(1, 12)]
     YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
 
-    credit_card_number = forms.CharField(label='Credit card number', required=False)
-    cvv = forms.CharField(label='Security code (CVV)', required=False)
-    expiry_month = forms.ChoiceField(label='Month', choices=MONTH_CHOICES, required=False)
-    expiry_year = forms.ChoiceField(label='Year', choices=YEAR_CHOICES, required=False)
-    stripe_id = forms.CharField(widget=forms.HiddenInput)   # widget=forms.HiddenInput
+    # These are set to 'required=False' so that the plain text is not transmitted through the browser.
+    # Stripe handles this themselves
+    credit_card_number = forms.CharField(label='Credit Card Number', required=False)
+    cvv = forms.CharField(label='Security Code (CVV)', required=False)
+    expiry_month = forms.ChoiceField(label='Expiration Month', choices=MONTH_CHOICES, required=False)
+    expiry_year = forms.ChoiceField(label='Expiration Year', choices=YEAR_CHOICES, required=False)
+    stripe_id = forms.CharField(widget=forms.HiddenInput)
 
 
 class OrderForm(forms.ModelForm):
 
+    save_address = forms.BooleanField(label='Save/update my address for future use', required=False)
+
     class Meta:
         model = Order
-        widgets = {'total': forms.HiddenInput()}
+        widgets = {'total': forms.HiddenInput(), 'address2': forms.TextInput(attrs={'placeholder': 'Optional'})}
+        labels = {'address1': 'Address', 'address2': 'Address 2', 'postal_code': 'Postal Code',
+                  'order_info': 'Special Instructions'}
+        placeholders = {'address2': 'Optional'}
         fields = (
-            'name', 'order_info', 'total'  # , 'shipping_info' get the credit  card working first!!
+            'name', 'address1', 'address2', 'city', 'state', 'postal_code', 'phone', 'order_info', 'total',
+            'save_address'
         )

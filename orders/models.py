@@ -6,11 +6,15 @@ from datetime import datetime
 
 class Order(models.Model):
     name = models.CharField(max_length=50, blank=False, null=False)
+    address1 = models.CharField(max_length=50, blank=False, null=False)
+    address2 = models.CharField(max_length=50, blank=True, null=True)
+    city = models.CharField(max_length=50, blank=False, null=False)
+    state = models.CharField(max_length=25, blank=False, null=False)
+    postal_code = models.CharField(max_length=20, blank=False, null=False)
+    phone = models.CharField(max_length=20, blank=True, null=True)
     order_info = models.CharField(max_length=200, null=True, blank=True)
     total = models.DecimalField(max_digits=6, decimal_places=2, null=False)
     date = models.DateTimeField(blank=True, null=True, default=datetime.now)
-    shipping_info = models.ForeignKey(ShippingInfo, blank=False, null=True, on_delete=models.SET_NULL)  # if shipping
-    # info is stored, pre-populate the web form
 
     def __str__(self):
         return self.name

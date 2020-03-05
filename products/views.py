@@ -18,7 +18,7 @@ def get_consignment_items(request):
     consigned_items = Item.objects.filter(is_consignment__exact=True)
 
     return render(request, 'consigned_items.html', {'consigned_items': consigned_items, 'page_title': 'Moose Leather',
-                                                    'page_heading': 'Consignment', 'page': '.consigned'})
+                                                    'page_heading': 'Consigned Goods', 'page': '.consigned'})
 
 
 @login_required
