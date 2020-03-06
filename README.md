@@ -1,5 +1,8 @@
 ## Moose Leather Online Store
 
+### Travis Continuous Integration
+[![Build Status](https://travis-ci.org/swendt57/moose_leather_project.svg?branch=master)](https://travis-ci.org/swendt57/moose_leather_project)
+
 ### Acknowledgements
 * Wood texture background courtesy of https://www.deviantart.com/ftourini
 * Text shadowing - https://html-css-js.com/css/generator/text-shadow/
