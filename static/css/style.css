@@ -45,6 +45,7 @@ section {
     font-family: "Calistoga", sans-serif;
     font-size: 1.5rem;
     padding-bottom: 25px;
+    margin-top: 15px;
 }
 
 p {
@@ -66,6 +67,7 @@ a:hover {
     /*background-color: #796553;*/
     background-image: linear-gradient(#ac9886, #796553);
     margin-right: 3px;
+    margin-left: 3px;
     /*text-shadow: .5px .5px 0 bisque;*/
     border: 1px solid black;
     color: black;
@@ -219,13 +221,13 @@ a.nav-link:hover {
 
 .cart-container {
     width: 100%;
-    height: 30px;
+    height: 40px;
     /*border: 1px solid white;*/
 }
 
 .cart-container p {
     margin: 0;
-    float: right;
+
 }
 
 
@@ -367,7 +369,21 @@ a.nav-link:hover {
     background-size: 100% 100%;
     border: 1px solid black;
     margin: auto;
+    position: relative;
 }
+
+p.text-overlay {
+    color: burlywood;
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+    font-weight: bold;
+    font-size: 1.5rem;
+    background-color: rgba(255,255,255,.7);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 5px;
+}
+
 
 .item-info {
     text-shadow: 1px 1px 1px rgba(0,0,0,1);
@@ -529,6 +545,12 @@ form label {
     background-color: bisque
 }
 
+/*.search {*/
+/*    background-color: bisque;*/
+/*    width: 150px;*/
+/*    height: 30px;*/
+/*}*/
+
 .error-msg {
     color: red;
 }
@@ -537,6 +559,105 @@ form label {
     background-color: darksalmon;
 }
 
+/*---------------Search Form ---------------*/
+/* Courtesy of Elwin Tamminga - https://codepen.io/elwint/pen/vGMRaB*/
+
+.button {
+	display: inline-block;
+	margin: 4px 2px;
+	/*background-color: #444;*/
+	font-size: 14px;
+	padding-left: 32px;
+	padding-right: 32px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	color: bisque;
+	text-decoration: none;
+	cursor: pointer;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.button:hover {
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	background-color: bisque;
+	color: black;
+}
+
+.search-container {
+    float: left;
+	position: relative;
+	display: inline-block;
+	/*margin: 4px 2px;*/
+	height: 30px;
+	width: 25px;
+	vertical-align: bottom;
+}
+
+.mglass {
+	display: inline-block;
+	pointer-events: none;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+}
+
+.searchbutton {
+	position: absolute;
+	font-size: 25px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+    border-radius: 5px 0 0 5px;
+}
+
+.search:focus + .searchbutton {
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+	background-color: bisque;
+	color: black;
+}
+
+.search {
+	position: absolute;
+	left: 24px; /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
+	background-color: bisque;
+	outline: none;
+	border: none;
+    border-radius: 0 5px 5px 0;
+	padding: 0;
+	width: 0;
+	height: 100%;
+	z-index: 10;
+	transition-duration: 0.4s;
+	-moz-transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s;
+	-o-transition-duration: 0.4s;
+}
+
+.search:focus {
+	width: 250px; /* Bar width+1px */
+	padding: 0 16px 0 0;
+}
+
+.expandright {
+	left: auto;
+	right: 49px; /* Button width-1px */
+}
+
+.expandright:focus {
+	padding: 0 0 0 16px;
+}
 
 /*---------------Tables---------------*/
 

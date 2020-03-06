@@ -14,7 +14,11 @@
             <div class="col-sm-6 col-lg-4 item-container">
                 <div class="panel-body">
                     <h4>{{ item.title }}</h4>
-                    <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')"></div>
+                    <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
+                        {% if item.is_consignment %}
+                            <p class="text-overlay">Consigned Item</p>
+                        {% endif %}
+                    </div>
                     <div class="item-info">
                         <p class="description">{{ item.description }} now is the time for all good me to come to the aid
                             of their country</p>
@@ -22,8 +26,12 @@
                         <div class="item-form">
                             <form method="POST" action="{% url 'add_to_cart' item.id %}">
                                 {%  csrf_token %}
-                                <label for="quantity">Qty: </label>
-                                <input type="number" name="quantity" min="1" max="10" value="1">
+                                {% if item.is_consignment %}
+                                    <input type="hidden" name="quantity" value="1">
+                                {% else %}
+                                    <label for="quantity">Qty: </label>
+                                    <input type="number" name="quantity" min="1" max="10" value="1">
+                                {% endif %}
                                 <button type="submit" class="btn ml-btn">Add to Cart</button>
                             </form>
                         </div>

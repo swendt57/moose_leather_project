@@ -3,6 +3,14 @@
 
 {% block head_js %}
     <script src="{% static 'js/photo_handler.js' %}"></script>
+    <script>
+    let myVar;
+        {#function checkForConsigned(consigned) {#}
+        {#    if (consigned) {#}
+        {#        $('.item-photo').text('Consigned Item');#}
+        {#    }#}
+        {#}#}
+    </script>
 {% endblock %}
 
 {% block content %}
@@ -14,7 +22,11 @@
             <div class="col-sm-6 col-lg-4 item-container">
                 <div class="panel-body">
                     <h4>{{ item.title }}</h4>
-                    <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')"></div>
+                    <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
+                        {% if item.is_consignment %}
+                            <p class="text-overlay">Consigned Item</p>
+                        {% endif %}
+                    </div>
                     <div class="item-info">
                         <p class="description">{{ item.description }} now is the time for all good me to come to the aid
                             of their country</p>

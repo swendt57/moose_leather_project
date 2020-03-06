@@ -25,7 +25,7 @@ class OrderForm(forms.ModelForm):
         widgets = {'total': forms.HiddenInput(), 'address2': forms.TextInput(attrs={'placeholder': 'Optional'})}
         labels = {'address1': 'Address', 'address2': 'Address 2', 'postal_code': 'Postal Code',
                   'order_info': 'Special Instructions'}
-        placeholders = {'address2': 'Optional'}
+        placeholders = {'address2': 'Optional', 'order_info': 'Optional'}
         fields = (
             'name', 'address1', 'address2', 'city', 'state', 'postal_code', 'phone', 'order_info', 'total',
             'save_address'

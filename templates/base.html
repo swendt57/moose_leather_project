@@ -76,14 +76,27 @@
 
 
 <section>
-    <div class="container">
+<div class="container">
+
         <div class="cart-container">
-            <p><a href="{% url 'view_cart' %}">
+
+
+               <div class="search-container">
+                <form action="{% url 'search' %}" method="get">
+                    <input class="search" id="searchright" type="search" name="q" placeholder="Search">
+                    <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
+                </form>
+            </div>
+
+            <div style="float:right;">
+                <a href="{% url 'view_cart' %}">
                 <i class="fa fa-shopping-cart"></i> Cart
                 {% if item_count > 0 %}
                     <label class="badge badge-warning">{{ item_count }}</label>
                 {% endif %}
-            </a></p>
+                </a>
+            </div>
+
         </div>
 
         {% if messages %}
@@ -95,7 +108,8 @@
                 </div>
             {% endfor %}
         {% endif %}
-    </div>
+</div>
+
 
     <div class="container">
         <div class="page-heading">{{ page_heading }}</div>
@@ -103,6 +117,7 @@
         {% block content %} {% endblock %}
 
     </div>
+
 </section>
 
 <footer>

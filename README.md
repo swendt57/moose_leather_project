@@ -8,3 +8,4 @@
 * Calling super() on setUpClass in tests - https://stackoverflow.com/questions/29653129/
 * Resetting migrations - https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
 * Buttons that act like a link - https://www.w3docs.com/snippets/html/how-to-create-an-html-button-that-acts-like-a-link.html
+* Expandable search box - Elwin Tamminga - https://codepen.io/elwint/pen/vGMRaB
