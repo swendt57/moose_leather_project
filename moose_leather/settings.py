@@ -32,6 +32,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'moose-leather.herokuapp.com']
 
+# COMMENTS_CANONICAL_URL = 'http://127.0.0.1:8000/products/comments'
 
 # Application definition
 
