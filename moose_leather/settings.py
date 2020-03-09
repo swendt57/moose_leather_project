@@ -32,7 +32,10 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'moose-leather.herokuapp.com']
 
-# COMMENTS_CANONICAL_URL = 'http://127.0.0.1:8000/products/comments'
+if os.path.exists("env.py"):
+    CANONICAL_URL = "http://127.0.0.1:8000/comments"
+else:
+    CANONICAL_URL = "https://moose-leather.herokuapp.com/comments"
 
 # Application definition
 
@@ -44,7 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
-    'home',
+    'general',
     'accounts',
     'products',
     'orders',
@@ -168,11 +171,9 @@ STATICFILES_DIRS = [
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # TODO who uses this? Can it be removed?
 
 MEDIAFILES_LOCATION = 'media'
-# DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-# MEDIA_URL = '/media/'
 MEDIA_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, MEDIAFILES_LOCATION)
 
 STRIPE_PUBLISHABLE = os.environ.get('STRIPE_PUBLISHABLE')

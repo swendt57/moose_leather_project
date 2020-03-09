@@ -27,7 +27,7 @@ html, body {
 body {
     font-family: "Roboto", sans-serif;
     font-size: 15px;
-    color: white;
+    color: ghostwhite;
 }
 
 /* BS OR */
@@ -433,6 +433,12 @@ p.text-overlay {
     }
 }
 
+/*---------------Disqus---------------*/
+
+.disqus-container strong {
+    color: burlywood;
+}
+
 /*---------------Cart---------------*/
 /* BS OR */
 .card {
@@ -501,19 +507,17 @@ p.text-overlay {
 
 /*---------------Footer---------------*/
 
-footer div {
+footer p {
     font-size: 12px;
-    margin: auto 50px;
-}
-
-.copyright {
+    margin: 10px auto;
     text-align: center;
+    color: bisque;
 }
 
 /* styles for tablet */
 @media (min-width: 768px) {
 
-    footer div {
+    footer p {
         font-size: 13px;
     }
 }
@@ -521,7 +525,7 @@ footer div {
 /* styles for desktop */
 @media (min-width: 992px) {
 
-    footer div {
+    footer p {
         font-size: 14px;
     }
 }
@@ -616,7 +620,7 @@ form label {
 	width: 100%;
 	margin: 0;
 	padding: 0;
-    border-radius: 5px 0 0 5px;
+    border-radius: 3px 0 0 3px;
 }
 
 .search:focus + .searchbutton {
@@ -634,7 +638,7 @@ form label {
 	background-color: bisque;
 	outline: none;
 	border: none;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 3px 3px 0;
 	padding: 0;
 	width: 0;
 	height: 100%;

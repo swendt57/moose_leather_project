@@ -61,7 +61,3 @@ def submit_consigned_item(request):
                                                               'page_heading': 'Sell Something',
                                                               'page': '.consigned'})
 
-def load_comments(request):
-    """Displays the Disqus comments page"""
-
-    return render(request, 'comments.html', {'page_title': 'Comments', 'page_heading': 'Comments', 'page': '.tbd'})

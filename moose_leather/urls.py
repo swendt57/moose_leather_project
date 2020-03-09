@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from home.views import index
+from general.views import index, load_comments
 from accounts import urls as urls_accounts
 from products import urls as urls_products
 from cart import urls as urls_cart
@@ -33,5 +33,6 @@ urlpatterns = [
     path('cart/', include(urls_cart)),
     path('checkout/', include(urls_checkout)),
     path('search/', include(urls_search)),
+    path('comments', load_comments, name='comments'),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
