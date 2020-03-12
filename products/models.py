@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
 from django.core.exceptions import ValidationError
+from django.core.files.images import get_image_dimensions
 
 
 class Category(models.Model):
@@ -18,12 +19,20 @@ class Category(models.Model):
 
 class Item(models.Model):
 
-    # Thanks to ramdog on Stack Overflow
+    # Thanks to ramdog and Quintin Walker on Stack Overflow
     def validate_image(self):
-        filesize = self.file.size
         megabyte_limit = 1.0
-        if filesize > megabyte_limit * 1024 * 1024:
-            raise ValidationError("Max file size is %sMB" % str(megabyte_limit))
+        width_limit = 400
+        height_limit = 300
+
+        file_size = self.file.size
+        (file_width, file_height) = get_image_dimensions(self)
+
+        if file_size > megabyte_limit * 1024 * 1024:
+            raise ValidationError("Max image size is %sMB" % str(megabyte_limit))
+        elif file_width > width_limit or file_height > height_limit:
+            raise ValidationError("Max image dimensions are 400 x 300 pixels. "
+                                  "Your image is {0} x {1} pixels.".format(file_width, file_height))
 
     title = models.CharField(max_length=50, null=False, blank=False)
     description = models.CharField(max_length=200, null=False, blank=False)

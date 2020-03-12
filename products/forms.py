@@ -15,6 +15,6 @@ class ConsignmentForm(forms.ModelForm):
     class Meta:
         model = Item
 
-        labels = {'image': 'Upload Photo --- recommended dimensions: 400 x 300 pixels - 1 MB max'}
+        labels = {'image': 'Upload Photo --- maximum dimensions are: 400 x 300 pixels and 1 MB max'}
         fields = ('title', 'description', 'price', 'image', 'category')
 
