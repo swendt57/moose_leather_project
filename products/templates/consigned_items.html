@@ -4,20 +4,23 @@
 {% block head_js %}
     <script src="{% static 'js/photo_handler.js' %}"></script>
     <script>
-    let myVar;
-        {#function checkForConsigned(consigned) {#}
-        {#    if (consigned) {#}
-        {#        $('.item-photo').text('Consigned Item');#}
-        {#    }#}
-        {#}#}
+        $(document).ready(function() {
+            $('#search').css('visibility', 'visible');
+        });
     </script>
 {% endblock %}
 
 {% block content %}
 
 <div class="container">
+    {% if other_count > 0 %}
+    <div>
+        <p>{{ other_count }} additional {% if other_count == 1 %}result was{% else %}results were{% endif %} found on the <a href="{% url 'search' %}?type=retail&q={{ request.GET.q }}">New Goods</a> page.</p>
+    </div>
+    {% endif %}
+
     <div class="row row-flex">
-        {% for item in consigned_items %}
+        {% for item in found_items %}
 
             <div class="col-sm-6 col-lg-4 item-container">
                 <div class="panel-body">
