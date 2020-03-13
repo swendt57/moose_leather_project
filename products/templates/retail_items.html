@@ -3,55 +3,32 @@
 
 {% block head_js %}
     <script src="{% static 'js/photo_handler.js' %}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#search').css('visibility', 'visible');
-        });
-    </script>
+    {# Only want the Search to appear on the products pages #}
+    <script src="{% static 'js/search_visibility.js' %}"></script>
 {% endblock %}
 
 {% block content %}
 
 <div class="container">
+    {% if not page_items %}
+        <p>No search results were found matching your criteria on this page.</p>
+    {% endif %}
+
     {% if other_count > 0 %}
     <div>
-        <p>{{ other_count }} additional {% if other_count == 1 %}result was{% else %}results were{% endif %} found on the <a href="{% url 'search' %}?type=consigned&q={{ request.GET.q }}">Consigned Goods</a> page.</p>
+        <p>{% if not page_items %}However,{% endif %} {{ other_count }} {% if other_count == 1 %}result was{% else %}results were{% endif %} {% if page_items %}also{% endif %} found on the <a href="{% url 'search' %}?type=consigned&q={{ request.GET.q }}">Consigned&nbsp;Goods</a> page.</p>
     </div>
     {% endif %}
 
     <div class="row row-flex">
-        {% for item in found_items %}
-
-            <div class="col-sm-6 col-lg-4 item-container">
-                <div class="panel-body">
-                    <h4>{{ item.title }}</h4>
-                    <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
-                        {% if item.is_consignment %}
-                            <p class="text-overlay">Consigned Item</p>
-                        {% endif %}
-                    </div>
-                    <div class="item-info">
-                        <p class="description">{{ item.description }} now is the time for all good me to come to the aid
-                            of their country</p>
-                        <div class="item-price">${{ item.price }}</div>
-                        <div class="item-form">
-                            <form method="POST" action="{% url 'add_to_cart' item.id %}">
-                                {%  csrf_token %}
-                                {% if item.is_consignment %}
-                                    <input type="hidden" name="quantity" value="1">
-                                {% else %}
-                                    <label for="quantity">Qty: </label>
-                                    <input type="number" name="quantity" min="1" max="10" value="1">
-                                {% endif %}
-                                <button type="submit" class="btn ml-btn">Add to Cart</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        {% for item in page_items %}
+            {%  include 'panel_code.html' %}
         {% endfor %}
     </div>
+
+    {% include 'pagination.html' %}
+
 </div>
+
 
 {% endblock %}

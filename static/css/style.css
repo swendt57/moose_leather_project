@@ -2,26 +2,17 @@
 
 /* BS OR = Bootstrap Override */
 
-/*---------------Colors---------------*/
-
-/*ml-dark {*/
-/*    color: #796553;*/
-/*}*/
-
-/*ml-light {*/
-/*    color: bisque;*/
-/*}*/
-
 /*---------------General Styles---------------*/
 
+* {
+margin: 0;
+}
+
 html, body {
-    margin: 0;
     height: 100%;
     width: 100%;
     background-color: black;
-    /*background-image: url('tileable-wood.jpg');*/
-    /*opacity: 0.2;*/
-    display: table; /* used to position footer at bottom of short pages */
+    /*display: table; !* used to position footer at bottom of short pages *!*/
 }
 
 body {
@@ -50,6 +41,10 @@ section {
 
 p {
     margin: 20px 10px;
+}
+
+strong {
+    color: burlywood;
 }
 
 a {
@@ -512,6 +507,9 @@ p.text-overlay {
 }
 
 /*---------------Footer---------------*/
+footer {
+    margin: 40px auto 0;
+}
 
 footer p {
     font-size: 12px;
@@ -542,24 +540,10 @@ form label {
     color: burlywood;
 }
 
-/*input:read-write,*/
-/*input[type='file'],*/
-/*.select-list,*/
-/*.select-list option,*/
-/*.select-list:focus {*/
-/*    background-color: bisque;*/
-/*}*/
-
 /* BS OR */
 .form-control {
     background-color: bisque
 }
-
-/*.search {*/
-/*    background-color: bisque;*/
-/*    width: 150px;*/
-/*    height: 30px;*/
-/*}*/
 
 .error-msg {
     color: red;
@@ -672,29 +656,16 @@ form label {
 /*---------------Tables---------------*/
 
 /* BS OR */
-.table {
-    /*table-layout: fixed;*/
+table {
     font-size: 15px;
     color: bisque;
 }
 
-.table .row {
-    border: burlywood;
-}
-
-.row-eq-height {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-}
-
- {
+th {
     color: burlywood;
 }
 
 td {
-    word-wrap: break-spaces;
     color: bisque;
 }
 
@@ -706,7 +677,3 @@ td {
     }
 }
 
-/* styles for desktop */
-@media (min-width: 992px) {
-
-}

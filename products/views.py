@@ -1,23 +1,45 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
+from django.core.paginator import Paginator
 from .models import Item
 from .forms import ConsignmentForm
+from datetime import datetime
+from pathlib import Path
+
+
+def get_items_per_page(request):
+    """Returns the number of panels to display per page on different screen sizes"""
+    screen_width = int(request.session.get('screen-width'))
+    if screen_width >= 1024:
+        return 3
+    elif 640 <= screen_width < 1024:
+        return 2
+    else:
+        return 4 # no reason to add too much pagination to
 
 
 def get_retail_items(request):
     """Displays all retail goods for sale"""
-    retail_items = Item.objects.filter(is_consignment__exact=False)
+    found_items = Item.objects.filter(is_consignment__exact=False)
 
-    return render(request, 'retail_items.html', {'retail_items': retail_items, 'page_title': 'Moose Leather',
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(found_items, get_items_per_page(request))
+    page_items = paginator.page(page_number)
+
+    return render(request, 'retail_items.html', {'page_items': page_items, 'page_title': 'Moose Leather',
                                                  'page_heading': 'New Goods', 'page': '.retail'})
 
 
 def get_consignment_items(request):
     """Displays all consigned goods for sale"""
-    consigned_items = Item.objects.filter(is_consignment__exact=True)
+    found_items = Item.objects.filter(is_consignment__exact=True)
 
-    return render(request, 'consigned_items.html', {'consigned_items': consigned_items, 'page_title': 'Moose Leather',
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(found_items, get_items_per_page(request))
+    page_items = paginator.page(page_number)
+
+    return render(request, 'consigned_items.html', {'page_items': page_items, 'page_title': 'Moose Leather',
                                                     'page_heading': 'Consigned Goods', 'page': '.consigned'})
 
 
@@ -42,6 +64,11 @@ def submit_consigned_item(request):
             item = form.save(commit=False)
             item.user = request.user
             item.is_consignment = True
+
+            # rename the image to avoid overwriting files
+            # new_filename = assemble_new_filename(request, item.image.name)
+            # item.image.name = new_filename
+
             item.save()
             messages.success(request, "Your upload was successful!")
 
@@ -61,3 +88,11 @@ def submit_consigned_item(request):
                                                               'page_heading': 'Sell Something',
                                                               'page': '.consigned'})
 
+
+def assemble_new_filename(request, filename):
+    now = datetime.now()
+    timestamp = str(now.strftime("%Y%m%d_%H-%M-%S"))
+    name = request.user.last_name
+    ext = Path(filename).suffix
+
+    return name + timestamp + ext

@@ -1,0 +1,19 @@
+{% if page_items and request.path != '/search/' %}
+    <div class="container pagination">
+        <span class="step-links">
+        {% if page_items.has_previous %}
+            <a href="?page=1">&laquo; first</a>&nbsp;
+            <a href="?page={{ page_items.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            &nbsp;Page {{ page_items.number }} of {{ page_items.paginator.num_pages }}&nbsp;
+        </span>
+
+        {% if page_items.has_next %}
+            <a href="?page={{ page_items.next_page_number }}&q=vest&type=retail">next</a>&nbsp;
+            <a href="?page={{ page_items.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+        </span>
+    </div>
+{% endif %}

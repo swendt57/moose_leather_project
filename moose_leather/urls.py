@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
-from general.views import index, load_comments
+from general.views import index, load_comments, set_screen_width
 from accounts import urls as urls_accounts
 from products import urls as urls_products
 from cart import urls as urls_cart
@@ -28,6 +28,7 @@ from .settings import MEDIA_ROOT
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='index'),
+    path('set_width', set_screen_width, name='set_screen_width'),
     path('accounts/', include(urls_accounts)),
     path('products/', include(urls_products)),
     path('cart/', include(urls_cart)),

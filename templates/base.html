@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-     <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
     <style>
         {# highlights the nav button for the page the user is on #}
@@ -61,7 +61,7 @@
                         <a class="nav-link" href="{% url 'retail' %}"><span class="retail">New Goods</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'consigned' %}"><span class="consigned">Consignment</span></a>
+                        <a class="nav-link" href="{% url 'consigned' %}"><span class="consigned">Consigned Goods</span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'comments' %}"><span class="comments">Discussion</span></a>
@@ -73,8 +73,6 @@
     </div>
 </header>
 
-
-
 <section>
 <div class="container">
 
@@ -83,9 +81,9 @@
             <div id="search" class="search-container" style="visibility:hidden;">
                 <form action="{% url 'search' %}" method="get">
                     {% if request.path == '/products/' %}
-                    <input type="hidden" name="type" value="retail">
+                        <input type="hidden" name="type" value="retail">
                     {% else %}
-                    <input type="hidden" name="type" value="consigned">
+                        <input type="hidden" name="type" value="consigned">
                     {% endif %}
                     <input class="search" id="searchright" type="search" name="q" placeholder="Search">
                     <label class="button searchbutton" for="searchright"><span class="mglass">&#9906;</span></label>
@@ -93,18 +91,19 @@
             </div>
 
             <div style="float:right;">
-            {% if user.is_authenticated %}
-                <a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a> || <a href="{% url 'logout' %}"><i
-                        class="fas fa-sign-out-alt"></i> Log Out</a>
-            {% else %}
-                <a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a> || <a
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}"><i class="fa fa-user"></i> Profile</a> ||
+                    <a href="{% url 'logout' %}"><i
+                            class="fas fa-sign-out-alt"></i> Log Out</a>
+                {% else %}
+                    <a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a> || <a
                         href="{% url 'login' %}"><i class="fa fa-sign-in-alt"></i> Log In</a>
-            {% endif %}
-                 || <a href="{% url 'view_cart' %}">
-                    <i class="fa fa-shopping-cart"></i> Cart
-                    {% if item_count > 0 %}
+                {% endif %}
+                || <a href="{% url 'view_cart' %}">
+                        <i class="fa fa-shopping-cart"></i> Cart
+                        {% if item_count > 0 %}
                         <label class="badge badge-warning">{{ item_count }}</label>
-                    {% endif %}
+                        {% endif %}
                     </a>
             </div>
 
@@ -122,7 +121,7 @@
                 </div>
             {% endfor %}
         {% endif %}
-</div>
+    </div>
 
 
     <div class="container">
@@ -136,18 +135,29 @@
 
 <footer>
     <div class="container">
-        <p class="copyright"> &copy;2020 Moose Leather</p>
+        <p> &copy;2020 Moose Leather</p>
         {% if user.is_authenticated %}
         <p>Signed in as: <span style="color:burlywood;">{{ user.first_name }} {{ user.last_name }}</span></p>
-{#        <p><a href="{% url 'change_password' %}"><i class="fa fa-key"></i> Change Password</a></p>#}
+        {# <p><a href="{% url 'change_password' %}"><i class="fa fa-key"></i> Change Password</a></p>#}
         {% endif %}
     </div>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://js.stripe.com/v2/"></script>  <!-- Stripe recommends making this available on all pages of the website -->
+<script src="https://js.stripe.com/v2/"></script>
+<!-- Stripe recommends making this available on all pages of the website -->
 <script id="dsq-count-scr" src="//moose-leather.disqus.com/count.js" async></script> <!-- Disqus blog/comments -->
+{% csrf_token %}
+<script>
+    let width = $(document).width();
+    let csrf_token = $("[name=csrfmiddlewaretoken]").val();
+    $.post({
+        url: "set_width",
+        headers: {"X-CSRFToken": csrf_token},
+        data: {"width": width}
+    });
+</script>
 {% block head_js %}{% endblock %}
 
 </body>
