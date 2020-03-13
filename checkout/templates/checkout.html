@@ -9,7 +9,6 @@
         Stripe.publishableKey = 'pk_test_w8EVBYHdBkSx92y1qB1GZxcr00IoQY0zB4';
     //]]>
 
-    {#let stripe = Stripe('pk_test_w8EVBYHdBkSx92y1qB1GZxcr00IoQY0zB4')#}
 </script>
 <script src="{% static 'js/stripe.js' %}"></script>
 {% endblock %}
@@ -32,8 +31,8 @@
     </tr>
     {% endfor %}
     <tr>
-        <td align="right">Grand Total:</td>
-        <td colspan="3" align="right"><i class="fas fa-dollar-sign" aria-hidden="true"></i> {{ total }}</td>
+        <td colspan="2" align="right">Grand Total:</td>
+        <td colspan="2" align="right"><i class="fas fa-dollar-sign" aria-hidden="true"></i> {{ total }}</td>
     </tr>
 </table>
 

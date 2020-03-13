@@ -16,12 +16,16 @@
                 <div class="col-sm-6 col-md-4 col-lg-3 card-container">
                     <div class="card card-cart">
                         <div class="item-photo"
-                             style="background-image: url('{{ MEDIA_URL }}{{ c_item.item.image }}')"></div>
+                             style="background-image: url('{{ MEDIA_URL }}{{ c_item.item.image }}')">
+                            {% if c_item.item.is_consignment %}
+                                <p class="text-overlay">Consigned Item</p>
+                            {% endif %}
+                        </div>
                         <div class="card-body" id="card-info">
                             <h5 class="card-title">{{ c_item.item.title }}</h5>
                             <div class="card-subtitle">
-                                <p class="cart-qty">Qty: {{ c_item.quantity }}&nbsp;&nbsp;@</p>
-                                <p class="cart-price">${{ c_item.item.price }}</p>
+                                <p class="cart-left-float">Qty: {{ c_item.quantity }}&nbsp;&nbsp;@</p>
+                                <p class="cart-right-float">${{ c_item.item.price }}</p>
                             </div>
                         </div>
                         <div class="card-body">
@@ -58,8 +62,8 @@
         <!-- TODO try to update the class names for cart-qty and cart-price - when I change them to left and right the CSS breaks-->
         <div class="row justify-content-center">
             <div class="card-cart cart-total">
-                <p class="cart-qty">Total: <i class="fas fa-dollar-sign"></i> {{ total }}</p>
-                <p class="cart-price"><button onclick="window.location.href='{% url 'checkout' %}'" class="btn ml-btn"><i class="far fa-check-square"></i> Checkout</button></p>
+                <p class="cart-left-float" style="margin-top:12px;">Total: <i class="fas fa-dollar-sign"></i> {{ total }}</p>
+                <p class="cart-right-float"><button onclick="window.location.href='{% url 'checkout' %}'" class="btn ml-btn"><i class="far fa-check-square"></i> Checkout</button></p>
             </div>
         </div>
     </div>
