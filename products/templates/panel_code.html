@@ -1,11 +1,12 @@
 <div class="col-sm-6 col-lg-4 item-container">
     <div class="panel-body">
-        <h4>{{ item.title }}</h4>
+        <h4><a href="{%  url 'details' %}?id={{ item.id }}">{{ item.title }}</a></h4>
         <div class="item-photo" style="background-image: url('{{ MEDIA_URL }}{{ item.image }}')">
             {% if item.is_consignment %}
                 <p class="text-overlay">Consigned Item</p>
             {% endif %}
         </div>
+
         <div class="item-info">
             <p class="description">{{ item.description }} now is the time for all good me to come to the aid
                 of their country</p>

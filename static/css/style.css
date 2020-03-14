@@ -53,8 +53,8 @@ a {
 }
 
 a:hover {
-    color: brown;
-    text-decoration: underline;
+    color: bisque;
+    text-decoration: none;
 }
 
 .ml-btn {
@@ -173,9 +173,8 @@ a:hover {
     /* do NOT put a height value here; it blocks the background on the expanded nav*/
     background-image: url('tileable-wood.jpg'); /* background for expanded nav */
     z-index: 1100;
-    max-width: 1600px;
+    max-width: 1000px;
     margin: 0 auto;
-
 }
 
 /* BS OR */
@@ -262,9 +261,18 @@ a.nav-link:hover {
 
     /* BS OR */
     .navbar {
-        background-image: none;
-        height: 85px;
+        /* do NOT put a height value here; it blocks the background on the expanded nav*/
+        background-image: url('tileable-wood.jpg'); /* background for expanded nav */
+        z-index: 1100;
+        max-width: 1600px;
+        margin: 0 auto;
     }
+
+    /*!* BS OR *!*/
+    /*.navbar {*/
+    /*    background-image: none;*/
+    /*    height: 85px;*/
+    /*}*/
 
     /* BS OR */
     [class*="navbar-expand"] {
@@ -371,6 +379,12 @@ a.nav-link:hover {
     border: 1px solid black;
     margin: 3px auto;
     position: relative;
+    max-width: 400px;
+    max-height: 300px;
+}
+
+.item-photo.details {
+    margin: 10px 20px;
 }
 
 p.text-overlay {

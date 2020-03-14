@@ -34,8 +34,10 @@ ALLOWED_HOSTS = ['127.0.0.1', 'moose-leather.herokuapp.com']
 
 if os.path.exists("env.py"):
     CANONICAL_URL = "http://127.0.0.1:8000/comments"
+    CANONICAL_URL_DETAILS = "http://127.0.0.1:8000/products/details"
 else:
     CANONICAL_URL = "https://moose-leather.herokuapp.com/comments"
+    CANONICAL_URL_DETAILS = "https://moose-leather.herokuapp.com/products/details"
 
 # Application definition
 

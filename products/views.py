@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, reverse
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.conf import settings
 from .models import Item
 from .forms import ConsignmentForm
 from datetime import datetime
@@ -16,7 +17,7 @@ def get_items_per_page(request):
     elif 640 <= screen_width < 1024:
         return 2
     else:
-        return 4 # no reason to add too much pagination to
+        return 4  # no reason to add too much pagination to portrait phones
 
 
 def get_retail_items(request):
@@ -27,8 +28,10 @@ def get_retail_items(request):
     paginator = Paginator(found_items, get_items_per_page(request))
     page_items = paginator.page(page_number)
 
-    return render(request, 'retail_items.html', {'page_items': page_items, 'page_title': 'Moose Leather',
-                                                 'page_heading': 'New Goods', 'page': '.retail'})
+    return render(request, 'retail_items.html', {'page_items': page_items,
+                                                 'page_title': 'Moose Leather',
+                                                 'page_heading': 'New Goods',
+                                                 'page': '.retail'})
 
 
 def get_consignment_items(request):
@@ -39,8 +42,27 @@ def get_consignment_items(request):
     paginator = Paginator(found_items, get_items_per_page(request))
     page_items = paginator.page(page_number)
 
-    return render(request, 'consigned_items.html', {'page_items': page_items, 'page_title': 'Moose Leather',
-                                                    'page_heading': 'Consigned Goods', 'page': '.consigned'})
+    return render(request, 'consigned_items.html', {'page_items': page_items,
+                                                    'page_title': 'Moose Leather',
+                                                    'page_heading': 'Consigned Goods',
+                                                    'page': '.consigned'})
+
+
+def test_consignment(item):
+    if not item.is_consignment:
+        return '.retail'
+    else:
+        return '.consigned'
+
+
+def get_item_details(request):
+    """Displays the Details page for the requested item"""
+    item = Item.objects.get(id=request.GET.get('id'))
+    return render(request, 'item_details.html', {'item': item,
+                                                 'page_title': 'Moose Leather',
+                                                 'page_heading': 'History and Background',
+                                                 'page': test_consignment(item),
+                                                 'CANONICAL_URL_DETAILS': settings.CANONICAL_URL_DETAILS})
 
 
 @login_required
