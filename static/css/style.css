@@ -379,12 +379,16 @@ a.nav-link:hover {
     border: 1px solid black;
     margin: 3px auto;
     position: relative;
+}
+
+.details-photo {
+    margin: 10px 20px;
     max-width: 400px;
     max-height: 300px;
 }
 
-.item-photo.details {
-    margin: 10px 20px;
+.detail-text {
+    text-align: justify;
 }
 
 p.text-overlay {
@@ -521,8 +525,8 @@ p.text-overlay {
 }
 
 /*---------------Footer---------------*/
-footer {
-    margin: 40px auto 0;
+footer .container{
+    margin: 80px auto 20px;
 }
 
 footer p {
@@ -530,6 +534,10 @@ footer p {
     margin: 10px auto;
     text-align: center;
     color: bisque;
+}
+
+footer a {
+    text-decoration: underline;
 }
 
 /* styles for tablet */

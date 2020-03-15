@@ -19,6 +19,7 @@ def load_comments(request):
 
 
 def set_screen_width(request):
+    """Put the user's screen-width into the session"""
     if not request.is_ajax() or not request.method == 'POST':
         return HttpResponseNotAllowed(['POST'])
     request.session['screen-width'] = request.POST['width']

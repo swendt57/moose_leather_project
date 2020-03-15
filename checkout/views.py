@@ -15,6 +15,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 @login_required()
 def checkout(request):
+    """Checks out the user - processes payment and saves the order to the database"""
     if request.method == "POST":
         order_form = OrderForm(request.POST)
         payment_form = MakePaymentForm(request.POST)
@@ -53,8 +54,8 @@ def checkout(request):
             except stripe.error.CardError:
                 messages.error(request, "Sorry, your card was declined")
 
-            # TODO refactor code so that this is skipped if the card is declined. Currently, the app is posting the
-            #  error message above as well as the one below. Then you can take out the 'charge_info is not None' check
+            # refactor code so that this is skipped if the card is declined. Currently, the app is posting the
+            #  error message above as well as the one below. Then you can remove the 'charge_info is not None' in the if
 
             if charge_info is not None and charge_info.paid:
 

@@ -17,12 +17,12 @@ def get_items_per_page(request):
     elif 640 <= screen_width < 1024:
         return 2
     else:
-        return 4  # no reason to add too much pagination to portrait phones
+        return 4  # don't add too much pagination to portrait phones
 
 
 def get_retail_items(request):
     """Displays all retail goods for sale"""
-    found_items = Item.objects.filter(is_consignment__exact=False)
+    found_items = Item.objects.filter(is_consignment__exact=False).order_by('title')
 
     page_number = request.GET.get('page', 1)
     paginator = Paginator(found_items, get_items_per_page(request))
@@ -36,8 +36,7 @@ def get_retail_items(request):
 
 def get_consignment_items(request):
     """Displays all consigned goods for sale"""
-    found_items = Item.objects.filter(is_consignment__exact=True)
-
+    found_items = Item.objects.filter(is_consignment__exact=True).order_by('title')
     page_number = request.GET.get('page', 1)
     paginator = Paginator(found_items, get_items_per_page(request))
     page_items = paginator.page(page_number)
@@ -49,6 +48,7 @@ def get_consignment_items(request):
 
 
 def test_consignment(item):
+    """Checks to see if the Item is consigned"""
     if not item.is_consignment:
         return '.retail'
     else:
@@ -69,7 +69,6 @@ def get_item_details(request):
 def render_consigned_item_upload(request):
     """Displays the form for a user to upload a consigned item"""
     consignment_form = ConsignmentForm
-
     return render(request, 'upload_consigned_item.html', {'consignment_form': consignment_form,
                                                           'page_title': 'Upload Item',
                                                           'page_heading': 'Sell Something',
@@ -88,8 +87,8 @@ def submit_consigned_item(request):
             item.is_consignment = True
 
             # rename the image to avoid overwriting files
-            # new_filename = assemble_new_filename(request, item.image.name)
-            # item.image.name = new_filename
+            new_filename = assemble_new_filename(request, item.image.name)
+            item.image.name = new_filename
 
             item.save()
             messages.success(request, "Your upload was successful!")
@@ -103,7 +102,6 @@ def submit_consigned_item(request):
                                                                   'page_heading': 'Sell Something',
                                                                   'page': '.consigned'})
     else:
-        # TODO do I need this if I have separate methods for displaying and submitting the form?
         form = ConsignmentForm(None)
         return render(request, 'upload_consigned_item.html', {'consignment_form': form,
                                                               'page_title': 'Upload Item',
@@ -112,6 +110,7 @@ def submit_consigned_item(request):
 
 
 def assemble_new_filename(request, filename):
+    """Renames the uploaded image to avoid overwriting other user's files"""
     now = datetime.now()
     timestamp = str(now.strftime("%Y%m%d_%H-%M-%S"))
     name = request.user.last_name

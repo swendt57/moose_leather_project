@@ -7,9 +7,6 @@ from django.contrib.auth.forms import PasswordChangeForm
 from accounts.forms import UserLoginForm, UserRegistrationForm, ChangePasswordForm
 
 
-# Create your views here.
-
-
 def index(request):
     """Return the index.html file"""
     return render(request, 'index.html')
@@ -19,7 +16,7 @@ def index(request):
 def logout(request):
     """Log the user out"""
     auth.logout(request)
-    messages.success(request, "You have successfully been logged out!")
+    messages.success(request, "You have been logged out!")
     return redirect(reverse('index'))
 
 
@@ -41,12 +38,16 @@ def login(request):
                 messages.success(request, 'You have successfully logged in!')
                 return redirect(referer)  # send them back from whence they came
             else:
-                login_form.add_error(None, 'Your username or password is invalid')
+                messages.error(request, 'Your username and/or password is/are invalid')
+                # login_form.add_error(None, 'Your username or password is invalid')
 
     else:
         login_form = UserLoginForm()
 
-    return render(request, 'login.html', {'login_form': login_form})
+    return render(request, 'login.html', {'login_form': login_form,
+                                          'page_heading': 'Log In Form',
+                                          'page_title': 'Log In'
+                                          })
 
 
 def register(request):
@@ -68,10 +69,13 @@ def register(request):
                 messages.success(request, "You have successfully registered")
             else:
                 messages.error(request, 'Unable to register your account')
+                # messages.error(request, 'Unable to register your account')
     else:
         registration_form = UserRegistrationForm()
 
-    return render(request, 'register.html', {"registration_form": registration_form})
+    return render(request, 'register.html', {"registration_form": registration_form,
+                                             'page_heading': 'Registration Form',
+                                             'page_title': 'Registration'})
 
 
 def user_profile(request):

@@ -31,7 +31,7 @@
     <div id="header-bg"></div>
 
     <div class="container">
-        <nav class="navbar fixed-top navbar-expand-md">
+        <nav class="navbar fixed-top navbar-expand-lg">
 
             <a class="navbar-brand" href="/">
                 <div><img class="logo" src="{% static 'images/antlers.png' %}"
@@ -135,6 +135,7 @@
 
 <footer>
     <div class="container">
+        <p>Do you have <strong><a href="{% url 'upload_consigned' %}">something to sell?</a></strong></p>
         <p> &copy;2020 Moose Leather</p>
         {% if user.is_authenticated %}
         <p>Signed in as: <span style="color:burlywood;">{{ user.first_name }} {{ user.last_name }}</span></p>
@@ -153,7 +154,7 @@
     let width = $(document).width();
     let csrf_token = $("[name=csrfmiddlewaretoken]").val();
     $.post({
-        url: "set_width",
+        url: "/set_width",
         headers: {"X-CSRFToken": csrf_token},
         data: {"width": width}
     });

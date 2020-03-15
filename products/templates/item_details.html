@@ -1,16 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block head_js %}
-    <script src="{% static 'js/photo_handler.js' %}"></script>
-{% endblock %}
-
 {% block content %}
 
     <div class="container">
         <h4><a href="{{ request.META.HTTP_REFERER }}">{{ item.title }}</a></h4>
         <p class="detail-text">
-            <img class="item-photo details" src="{{ MEDIA_URL }}{{ item.image }}" alt="Photo of product shown" align="right">
+            <img class="details-photo" src="{{ MEDIA_URL }}{{ item.image }}" alt="Photo of product shown" align="right">
             {{ item.history }}
         </p>
 
