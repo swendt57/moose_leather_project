@@ -28,7 +28,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['127.0.0.1', 'moose-leather.herokuapp.com']
 
@@ -158,7 +158,7 @@ AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=94608000,'
 }
 
-AWS_DEFAULT_ACL = 'public-read'
+AWS_DEFAULT_ACL = 'public-read'  # must have for AWS due to change in storage policy that Travis stops on the warning
 
 AWS_STORAGE_BUCKET_NAME = 'moose-leather'
 AWS_REGION_NAME = 'us-west-2'
