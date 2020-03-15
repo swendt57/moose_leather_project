@@ -22,7 +22,6 @@ jaraco.classes==3.1.0
 jaraco.collections==3.0.0
 jaraco.functools==3.0.0
 jaraco.text==3.2.0
-jasmine==3.5.0
 jasmine-core==3.5.0
 Jinja2==2.11.1
 jmespath==0.9.5
