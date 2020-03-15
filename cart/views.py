@@ -35,9 +35,3 @@ def adjust_cart(request, id):
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
 
-
-# def test_quantity(request):
-#     if request.POST.get('quantity').isdigit():
-#         return int(request.POST.get('quantity'))
-#     else:
-#         return 0  # is not correct for adjust function

@@ -7,7 +7,7 @@ urlpatterns = [
     path('login/', login, name='login'),
     path('register/', register, name='register'),
     path('profile/', user_profile, name='profile'),
-    path('change_password/', change_password, name='change_password'),  # this one can be used if the user is authenticated
+    path('change_password/', change_password, name='change_password'),  # use this one if the user is authenticated
 
     path('', include('django.contrib.auth.urls')),  # used for password resetting if the user forgets their password
 ]

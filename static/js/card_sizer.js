@@ -19,11 +19,8 @@ function determineTotalWidth() {
         $('.cart-total').css('width', (cardCount * cardWidth) - 30);
     }
 
+
+
 }
-
-
-
-
-
 
 /* screen width 768 sm, 992 md, 1200 lg, */

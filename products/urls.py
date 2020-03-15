@@ -11,6 +11,4 @@ urlpatterns = [
     path('details', get_item_details, name='details')
 ]
 
-# + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-#
-# print(static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+

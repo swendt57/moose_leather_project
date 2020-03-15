@@ -8,8 +8,7 @@
         </div>
 
         <div class="item-info">
-            <p class="description">{{ item.description }} now is the time for all good me to come to the aid
-                of their country</p>
+            <p class="description">{{ item.description }}</p>
             <div class="item-price">${{ item.price }}</div>
             <div class="item-form">
                 <form method="POST" action="{% url 'add_to_cart' item.id %}">

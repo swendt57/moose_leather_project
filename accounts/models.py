@@ -21,4 +21,4 @@ class UserProfile(models.Model):
     shipping_info = models.ForeignKey(ShippingInfo, null=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        return self.user.first_name + " " + self.user.last_name

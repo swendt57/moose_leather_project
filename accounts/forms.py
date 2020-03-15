@@ -52,7 +52,6 @@ class ChangePasswordForm(forms.Form):
     confirm_password = forms.CharField(widget=forms.PasswordInput)
 
     def clean_confirm_password(self):
-        old_password = self.cleaned_data.get('old_password')
         new_password = self.cleaned_data.get('new_password')
         confirm_password = self.cleaned_data.get('confirm_password')
 

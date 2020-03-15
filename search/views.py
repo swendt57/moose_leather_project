@@ -3,6 +3,7 @@ from products.models import Item
 
 
 def get_proper_grammar(count):
+    """As the name implies"""
     if count == 1:
         return "result was"
     else:
@@ -10,6 +11,7 @@ def get_proper_grammar(count):
 
 
 def do_search(request):
+    """Searches for q in Item titles"""
     q = request.GET['q']
     page_type = request.GET['type']
 

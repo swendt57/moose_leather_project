@@ -3,7 +3,7 @@ from orders.models import Order
 
 
 class MakePaymentForm(forms.Form):
-
+    """Creates the credit card charge form"""
     MONTH_CHOICES = [(i, i) for i in range(1, 12)]
     YEAR_CHOICES = [(i, i) for i in range(2019, 2036)]
 
@@ -17,7 +17,7 @@ class MakePaymentForm(forms.Form):
 
 
 class OrderForm(forms.ModelForm):
-
+    """Creates the order form to collect user details"""
     save_address = forms.BooleanField(label='Save/update my address for future use', required=False)
 
     class Meta:
