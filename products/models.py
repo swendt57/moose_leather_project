@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-from datetime import datetime
+from django.utils import timezone
 from django.core.exceptions import ValidationError
 from django.core.files.images import get_image_dimensions
 
@@ -47,7 +47,7 @@ class Item(models.Model):
     category = models.ForeignKey(Category, on_delete=models.PROTECT)
     image = models.ImageField(upload_to='images', default='images/no_image.png', validators=[validate_image])
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.PROTECT)  # required for consignment item
-    date_created = models.DateTimeField(blank=True, null=True, default=datetime.now)
+    date_created = models.DateTimeField(blank=True, null=True, default=timezone.now)
 
     def __str__(self):
         return self.title

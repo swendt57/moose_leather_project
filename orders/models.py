@@ -1,7 +1,6 @@
 from django.db import models
 from products.models import Item, Size
-from accounts.models import ShippingInfo
-from datetime import datetime
+from django.utils import timezone
 
 
 class Order(models.Model):
@@ -14,7 +13,7 @@ class Order(models.Model):
     phone = models.CharField(max_length=20, blank=True, null=True)
     order_info = models.CharField(max_length=200, null=True, blank=True)
     total = models.DecimalField(max_digits=6, decimal_places=2, null=False)
-    date = models.DateTimeField(blank=True, null=True, default=datetime.now)
+    date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 
     def __str__(self):
         return self.name
