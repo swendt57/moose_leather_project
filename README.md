@@ -10,14 +10,14 @@ items for sale on consignment.
 Since this is a concept website, most of the information is latin placeholder text and the images are photos from my 
 scrapbooks. Additionally, a real online store would offer many more items for sale.
 
-The website can be viewed at https://moose-leather.herokuapp.com/ 
-The code base is available at https://github.com/swendt57/moose_leather_project
-To access the admin area, use these credentials:
-U: mooseman
-P: unGulate
-To access the app as a regular user who has stored shipping info:
-U: mooseboy
-P: lil_unGulate
+The website can be viewed at https://moose-leather.herokuapp.com/  
+The code base is available at https://github.com/swendt57/moose_leather_project  
+To access the admin area, use these credentials:  
+U: mooseman  
+P: unGulate  
+To access the app as a regular user who has stored shipping info:  
+U: mooseboy  
+P: lil_unGulate  
 
 ### UX
 User Stories
@@ -62,7 +62,7 @@ Basic mock-ups of the site can be downloaded from my GitHub site at https://gith
   * Using Django template "includes" to reuse repititive sections of code.
   
 #### ER Diagram
-![](support/Moose_leather_ER.png)  
+![](support/Moose_Leather_ER.png)
  
 The full size diagram is available in GitHub at https://github.com/swendt57/moose_leather_project/blob/master/support/Moose_Leather_ER.pdf
 
